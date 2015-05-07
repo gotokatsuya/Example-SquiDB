@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "com.goka.example_squidb"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile project(':module:squidb') // SquiDB main project
+    compile project(':module:squidb-annotations') // SquiDB annotations project
+    apt project(':module:squidb-processor') // SquiDB code generator
+
+    compile project(':module:squidb-jackson-plugin') // Jackson plugin code module
+    compile project(':module:squidb-jackson-annotations') // Jackson plugin annotations
+    apt project(':module:squidb-jackson-compiler') // Jackson plugin compile-time code generator
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.0.0'
+}
+
+apt {
+    arguments {
+        squidbPlugins 'com.yahoo.squidb.jackson.JacksonPropertyGeneratorFactory'
+    }
+}

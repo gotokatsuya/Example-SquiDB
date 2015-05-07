@@ -1,0 +1,14 @@
+include ':app'
+
+include ':module:squidb'
+project(':module:squidb').projectDir = new File(settingsDir, "module/squidb")
+include ':module:squidb-annotations'
+project(':module:squidb-annotations').projectDir = new File(settingsDir, "module/squidb-annotations")
+include ':module:squidb-processor'
+project(':module:squidb-processor').projectDir = new File(settingsDir, "module/squidb-processor")
+include ':module:squidb-jackson-plugin'
+project(':module:squidb-jackson-plugin').projectDir = new File(settingsDir, "module/squidb-jackson-plugin")
+include ':module:squidb-jackson-annotations'
+project(':module:squidb-jackson-annotations').projectDir = new File(settingsDir, "module/squidb-jackson-annotations")
+include ':module:squidb-jackson-compiler'
+project(':module:squidb-jackson-compiler').projectDir = new File(settingsDir, "module/squidb-jackson-compiler")
