@@ -1,2 +1,2 @@
-# Example-SquiDB
+# squidb-example
 Example of use SquiDB
